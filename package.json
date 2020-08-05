@@ -1,0 +1,25 @@
+{
+  "name": "chatify",
+  "version": "1.0.0",
+  "description": "A forum for spotify users to comment on albums",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradpritchett/project2-spotify-form.git"
+  },
+  "author": "Corey Kothenbeutel, Matt Stadtler, Trever Simmons, Brad Pritchett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradpritchett/project2-spotify-form/issues"
+  },
+  "homepage": "https://github.com/bradpritchett/project2-spotify-form#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.3.4"
+  }
+}
