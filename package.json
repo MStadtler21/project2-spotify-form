@@ -4,6 +4,7 @@
   "description": "A forum for spotify users to comment on albums",
   "main": "server.js",
   "scripts": {
+    "build:css": "tailwind build src/styles.css -o public/styles.css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
