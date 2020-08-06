@@ -13,21 +13,17 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         timePosted: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.NOW
+            defaultValue: DataTypes.NOW
         },
         datePosted: {
             type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.NOW
+            defaultValue: DataTypes.NOW
         },
         spotify_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: Album,
-                key: "id"
-            }
+            type: DataTypes.INTEGER
         }
     });
 
