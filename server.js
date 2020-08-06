@@ -10,7 +10,7 @@
 var express = require("express"); // Express web server framework
 var cookieParser = require("cookie-parser");
 var cors = require("cors");
-var db = require("./models");
+var dotenv = require("dotenv")
 
 // express server
 var app = express();
