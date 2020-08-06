@@ -4,7 +4,9 @@ module.exports = function (sequelize, DataTypes) {
         text: {
             type: DataTypes.TEXT,
             allowNull: false,
-            len: [100]
+            validate: {
+                len: [1, 100]
+            }
         },
         author: {
             type: DataTypes.STRING,
@@ -16,7 +18,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: Sequelize.NOW
         },
         datePosted: {
-            tyle: DataTypes.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
             defaultValue: Sequelize.NOW
         },
@@ -30,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Comment.associate = function (models) {
-        Comment.belongsTo(models.Album.spotifyId, {
+        Comment.belongsTo(models.Album, {
             foreignKey: {
                 allowNull: false
             }
