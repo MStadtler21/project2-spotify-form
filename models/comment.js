@@ -4,33 +4,31 @@ module.exports = function (sequelize, DataTypes) {
         text: {
             type: DataTypes.TEXT,
             allowNull: false,
-            len: [100]
+            validate: {
+                len: [1, 100]
+            }
         },
         author: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         timePosted: {
-            type: DataTypes.DATETIME,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.NOW
+            defaultValue: DataTypes.NOW
         },
         datePosted: {
-            tyle: DataTypes.DATE,
+            type: DataTypes.DATE,
             allowNull: false,
-            defaultValue: Sequelize.NOW
+            defaultValue: DataTypes.NOW
         },
         spotify_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: Album,
-                key: "id"
-            }
+            type: DataTypes.INTEGER
         }
     });
 
     Comment.associate = function (models) {
-        Comment.belongsTo(models.Album.spotifyId, {
+        Comment.belongsTo(models.Album, {
             foreignKey: {
                 allowNull: false
             }
