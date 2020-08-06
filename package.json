@@ -29,6 +29,7 @@
     "sequelize": "^6.3.4"
   },
   "devDependencies": {
+    "eslint": "^7.6.0",
     "jest": "^26.2.2"
   }
 }
