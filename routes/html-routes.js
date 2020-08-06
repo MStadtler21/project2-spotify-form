@@ -25,4 +25,9 @@ module.exports = function (app) {
   app.get("/album", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/html/album.html"));
   });
+
+  // route testing
+  app.get("/route-test", function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/html/route-test.html"));
+  });
 };
