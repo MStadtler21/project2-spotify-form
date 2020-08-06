@@ -1,5 +1,5 @@
-const sequelize = require("../config/connection");
-const { DataTypes } = require("../config/connection");
+// const sequelize = require("../config/connection");
+// const { DataTypes } = require("../config/connection");
 
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define("User", {

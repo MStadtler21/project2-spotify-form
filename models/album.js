@@ -1,13 +1,9 @@
-
-
-//spotifyId, title, artist, imgURI small, imgURImed, imgURILArge
-
 module.exports = (sequelize, DataTypes) => {
     const Album = sequelize.define("Album", {
         spotifyId: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primarykey: true
+            primaryKey: true
         },
         title: {
             type: DataTypes.STRING,
@@ -18,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         imgURIsmall: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
         },
         imgURIMed: {
             type: DataTypes.STRING
         },
         imgURILarge: {
-            type: DataTypes.String
+            type: DataTypes.STRING
         }
 
     });
