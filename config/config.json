@@ -2,7 +2,7 @@
     "development": {
         "username": "root",
         "password": null,
-        "database": "tbd",
+        "database": "chatify",
         "host": "127.0.0.1",
         "port": 3306,
         "dialect": "mysql"
@@ -19,7 +19,7 @@
         "username": "root",
         "password": null,
         "database": "tbd",
-        "host": "127.0.0.1",
+        "host": "",
         "port": 3306,
         "dialect": "mysql"
     }
