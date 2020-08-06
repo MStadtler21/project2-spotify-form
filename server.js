@@ -10,8 +10,8 @@
 var express = require("express"); // Express web server framework
 var cookieParser = require("cookie-parser");
 var cors = require("cors");
-var dotenv = require("dotenv")
-
+require("dotenv").config();
+var db = require("./models");
 // express server
 var app = express();
 var PORT = process.env.PORT || 8888;
@@ -30,8 +30,8 @@ require("./routes/spotify-api-routes.js")(app);
 
 // Starts the server to begin listening
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync({ force: true }).then(function () {
+  app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
   });
 });
