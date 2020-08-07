@@ -16,11 +16,6 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../public/html/index.html"));
   });
 
-  // index route loads view.html
-  app.get("/index", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/html/index.html"));
-  });
-
   // album page
   app.get("/album", function (req, res) {
     res.sendFile(path.join(__dirname, "../public/html/album.html"));
