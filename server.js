@@ -12,6 +12,7 @@ var cookieParser = require("cookie-parser");
 var cors = require("cors");
 require("dotenv").config();
 var db = require("./models");
+
 // express server
 var app = express();
 var PORT = process.env.PORT || 8888;
