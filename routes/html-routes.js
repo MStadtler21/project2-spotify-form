@@ -13,12 +13,12 @@ module.exports = function (app) {
 
 	// index route loads view.html
 	app.get("/", function (req, res) {
-		res.sendFile(path.join(__dirname, "../public/html/index.html"));
+		res.sendFile(path.join(__dirname, "../views/index.handlebars"));
 	});
 
 	// album page
 	app.get("/album", function (req, res) {
-		res.sendFile(path.join(__dirname, "../public/html/album.html"));
+		res.sendFile(path.join(__dirname, "../views/album.handlebars"));
 	});
 
 	// route testing
