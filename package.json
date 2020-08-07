@@ -1,35 +1,35 @@
 {
-  "name": "chatify",
-  "version": "1.0.0",
-  "description": "A forum for spotify users to comment on albums",
-  "main": "server.js",
-  "scripts": {
-    "build:css": "tailwind build src/styles.css -o public/styles.css",
-    "test": "jest",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bradpritchett/project2-spotify-form.git"
-  },
-  "author": "Corey Kothenbeutel, Matt Stadtler, Trever Simmons, Brad Pritchett",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/bradpritchett/project2-spotify-form/issues"
-  },
-  "homepage": "https://github.com/bradpritchett/project2-spotify-form#readme",
-  "dependencies": {
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "mysql2": "^2.1.0",
-    "querystring": "^0.2.0",
-    "request": "^2.88.2",
-    "sequelize": "^6.3.4"
-  },
-  "devDependencies": {
-    "eslint": "^7.6.0",
-    "jest": "^26.2.2"
-  }
+	"name": "chatify",
+	"version": "1.0.0",
+	"description": "A forum for spotify users to comment on albums",
+	"main": "server.js",
+	"scripts": {
+		"build:css": "tailwind build src/styles.css -o public/styles.css",
+		"test": "jest",
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bradpritchett/project2-spotify-form.git"
+	},
+	"author": "Corey Kothenbeutel, Matt Stadtler, Trever Simmons, Brad Pritchett",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/bradpritchett/project2-spotify-form/issues"
+	},
+	"homepage": "https://github.com/bradpritchett/project2-spotify-form#readme",
+	"dependencies": {
+		"cookie-parser": "^1.4.5",
+		"cors": "^2.8.5",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"mysql2": "^2.1.0",
+		"querystring": "^0.2.0",
+		"request": "^2.88.2",
+		"sequelize": "^6.3.4"
+	},
+	"devDependencies": {
+		"eslint": "^7.6.0",
+		"jest": "^26.2.2"
+	}
 }
