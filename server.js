@@ -12,10 +12,15 @@ var cookieParser = require("cookie-parser");
 var cors = require("cors");
 require("dotenv").config();
 var db = require("./models");
+var exphbs = require("express-handlebars");
 
 // express server
 var app = express();
 var PORT = process.env.PORT || 8888;
+
+// handlebars setup
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 app
 	.use(express.static(__dirname + "/public"))
