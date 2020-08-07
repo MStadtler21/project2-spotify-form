@@ -24,5 +24,14 @@ module.exports = (sequelize, DataTypes) => {
 		
 
 	});
+
+	Album.associate = function (models) {
+		Album.hasMany(models.Album, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+	};
+	
 	return Album;
 };
