@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 	const Album = sequelize.define("Album", {
-		spotifyId: {
+		spotify_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 			primaryKey: true
@@ -13,16 +13,16 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		imgURIsmall: {
+		imgURLMed: {
+			//gallery
 			type: DataTypes.STRING
 		},
-		imgURIMed: {
-			type: DataTypes.STRING
-		},
-		imgURILarge: {
+		imgURLLarge: {
+			//albumPage
 			type: DataTypes.STRING
 		}
+		
 
 	});
 	return Album;
-}
+};
