@@ -1,6 +1,6 @@
 const sequelize = require("sequelize");
 
-const sequelize = new Sequelize("chatify", "root", "password", {
+const sequelize = new Sequelize("chatify", "root", "rootroot", {
     host: "localhost",
     port: 3306,
     dialect: "mysql",
