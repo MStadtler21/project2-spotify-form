@@ -3,6 +3,7 @@ module.exports = {
   theme: {
     important: true,
     theme: {
+      
       fontFamily: {
         display: ['Gilroy', 'sans-serif'],
         body: ['Graphik', 'sans-serif'],
