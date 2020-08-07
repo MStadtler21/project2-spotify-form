@@ -29,20 +29,24 @@ module.exports = function (app) {
     let token = req.params.token;
     console.log("add", id, token);
 
-    // ! if token == null, undefined, zero, redirect to login?
+    // ! if token == null, undefined, or zero: redirect to login?
 
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
 
     var options = {
-      url: "https://api.spotify.com/v1/me",
-      headers: { Authorization: "Bearer " + access_token },
+      url: `https://api.spotify.com/v1/albums/${id}`,
+      headers: { Authorization: "Bearer " + token },
       json: true,
     };
 
     // use the access token to access the Spotify Web API
     request.get(options, function (error, response, body) {
+      if(error) {
+        throw error;
+      }
       console.log(body);
+      console.log(response);
       // res.json(body)
       // ! create entry
     });

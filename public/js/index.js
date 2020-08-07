@@ -16,11 +16,16 @@ let token;
     }
     return hashParams;
   }
+  // get token from url
   token = getHashParams();
-  document.location.href = document.location.href.slice(
-    0,
-    document.location.href.indexOf("access_token")
-  );
+
+  if (token.access_token) {
+    // delete token from url
+    document.location.href = document.location.href.slice(
+      0,
+      document.location.href.indexOf("access_token")
+    );
+  } else {}
 })();
 console.log(token);
 // (function () {
