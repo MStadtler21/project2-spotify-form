@@ -1,7 +1,7 @@
-let userCredential
+let token;
 
 (function () {
-  console.log('load')
+  console.log("load");
   /**
    * Obtains parameters from the hash of the URL
    * @return Object
@@ -16,10 +16,13 @@ let userCredential
     }
     return hashParams;
   }
-  userCredential = getHashParams();
-  document.location.href = document.location.href.slice(0,document.location.href.indexOf("access_token"))
+  token = getHashParams();
+  document.location.href = document.location.href.slice(
+    0,
+    document.location.href.indexOf("access_token")
+  );
 })();
-console.log(userCredential);
+console.log(token);
 // (function () {
 //   /**
 //    * Obtains parameters from the hash of the URL

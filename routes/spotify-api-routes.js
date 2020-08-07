@@ -24,25 +24,28 @@ module.exports = function (app) {
     return text;
   };
 
-  app.get("/add/:id", (req, res) => {
+  app.get("/add/:id/:token", (req, res) => {
     let id = req.params.id;
-    console.log("add", id);
+    let token = req.params.token;
+    console.log("add", id, token);
+
+    // ! if token == null, undefined, zero, redirect to login?
 
     var state = generateRandomString(16);
     res.cookie(stateKey, state);
 
-    // your application requests authorization
-    var scope = "";
-    res.redirect(
-      "https://accounts.spotify.com/authorize?" +
-        querystring.stringify({
-          response_type: "code",
-          client_id: client_id,
-          scope: scope,
-          redirect_uri: redirect_uri,
-          state: state,
-        })
-    );
+    var options = {
+      url: "https://api.spotify.com/v1/me",
+      headers: { Authorization: "Bearer " + access_token },
+      json: true,
+    };
+
+    // use the access token to access the Spotify Web API
+    request.get(options, function (error, response, body) {
+      console.log(body);
+      // res.json(body)
+      // ! create entry
+    });
   });
 
   app.get("/login", function (req, res) {
@@ -71,7 +74,7 @@ module.exports = function (app) {
     var code = req.query.code || null;
     var state = req.query.state || null;
     var storedState = req.cookies ? req.cookies[stateKey] : null;
-    console.log(state)
+    console.log(state);
     if (state === null || state !== storedState) {
       res.redirect(
         "/index" +
