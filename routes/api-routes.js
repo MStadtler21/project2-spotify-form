@@ -1,7 +1,3 @@
-//Get all
-///api/search/:title
-//api/album:id
-//POst /api/comment/:id
 
 var db = require("../models");
 
@@ -37,11 +33,13 @@ module.exports = function (app) {
 	app.post("/api/comment/:id", function (req, res) {
 		console.log("req.body is", req.body);
 		db.Comment.create({
+			UserId: req.body.UserId,
 			text: req.body.text,
-			author: req.body.author
+			author: req.body.author,
+			AlbumSpotifyId: req.body.AlbumSpotifyId
 		})
-			.then(function (dbComment) {
-				console.log(dbComment);
+			.then(function () {
+
 				res.end();
 			});
 	});
