@@ -17,11 +17,11 @@ var app = express();
 var PORT = process.env.PORT || 8888;
 
 app
-  .use(express.static(__dirname + "/public"))
-  .use(cors())
-  .use(cookieParser())
-  .use(express.urlencoded({ extended: true }))
-  .use(express.json());
+	.use(express.static(__dirname + "/public"))
+	.use(cors())
+	.use(cookieParser())
+	.use(express.urlencoded({ extended: true }))
+	.use(express.json());
 
 // ROUTES
 // ============================
@@ -31,7 +31,7 @@ require("./routes/spotify-api-routes.js")(app);
 // Starts the server to begin listening
 // =============================================================
 db.sequelize.sync({ force: true }).then(function () {
-  app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
-  });
+	app.listen(PORT, function () {
+		console.log("App listening on PORT " + PORT);
+	});
 });
