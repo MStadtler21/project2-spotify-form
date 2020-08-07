@@ -28,6 +28,13 @@ module.exports = function (sequelize, DataTypes) {
 	});
 
 	Comment.associate = function (models) {
+		Comment.belongsTo(models.User, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+		
+		//if we dont like naming, can rename to spotify_id bc will be album id.
 		Comment.belongsTo(models.Album, {
 			foreignKey: {
 				allowNull: false
