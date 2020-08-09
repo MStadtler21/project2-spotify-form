@@ -14,7 +14,7 @@ section {
 }
 
 section#content {
-	width: 960px;
+	width: 800px;
 	overflow: hidden;
 	height: 3000px;
 	/*background: url("../../images/parallax-bg.jpg") center 0 repeat-y;*/

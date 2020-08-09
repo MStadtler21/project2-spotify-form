@@ -1,70 +1,53 @@
-<section id="content">
-  <header>
-    <h1>Parallaxing</h1>
-    <h2>Demo Site</h2>
+<section class="fixed items-center flex flex-col float-left w-1/4">
+  <header class="flex ">
+      <h3>Chatify</h3>
   </header>
+     
+  <div class="w-full p-8">
+    <div class="bg-white w-auto flex items-center rounded-full shadow-xl">
+      <input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="search" type="text" placeholder="Find Some Music">
+      <div class="p-4">
+        <button class="bg-green-400 text-white rounded-full p-2 hover:bg-green-400 focus:outline-none w-14 h-12 flex items-center justify-center">
+            Search
+        </button>
+      </div>
+    </div>
+  </div>
+    
+  <button class="w-1/2 m-6 rounded-full flex shadow bg-green-400 px-4 py-2 text-white hover:bg-green-400">
+    Login to Spotify
+  </button>
+</section>
 
+<section id="content">
+  
   <section id="part-1">
-    <header>
-      <h3>A title</h3>
-    </header>
-
-    <div class="content">
-      <div class="w-3/5 bg-gray-400 h-screen">
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+    
+    
+    <section>
+      <div class="grid text-black p-8">
+        <div class="bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg">
           <img class="w-full" src="/img/card-top.jpg" alt="Album Cover" />
           <div class="px-6 py-4"></div>
           <div class="font-bold text-xl mb-2">Album Title</div>
         </div>
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-          <img class="w-300" src="/img/card-top.jpg" alt="Album Cover" />
-          <div class="px-6 py-4"></div>
-          <div class="font-bold text-xl mb-2">Album Title</div>
-        </div>
-        <div class="max-w-sm rounded overflow-hidden shadow-lg">
-          <img class="w-full" src="/img/card-top.jpg" alt="Album Cover" />
-          <div class="px-6 py-4"></div>
-          <div class="font-bold text-xl mb-2">Album Title</div>
+      
+      <div class="grid grid-cols-1">
+        <div class="w-full p-8">
+          <div class="bg-white w-auto flex items-center rounded-full shadow-xl">
+              <input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="comment" type="text" placeholder="Comment">
+      
+                <button class="bg-green-400 text-white rounded-full p-2 hover:bg-green-400 focus:outline-none w-14 h-12 flex items-center " id="add-comment">
+                  Post
+                </button>
+          </div>
         </div>
       </div>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget purus erat, sit amet volutpat felis. Sed et
-        lectus nisl, id ultricies felis. Vivamus non ante augue, sit amet pellentesque magna. Donec eu dapibus sapien.
-        Morbi in ipsum vel massa hendrerit porttitor. Morbi leo magna, faucibus sed vulputate lacinia, adipiscing a
-        massa. Mauris vitae sem neque, at volutpat nisi. Nullam turpis est, porttitor et sagittis ultricies, volutpat
-        sit amet velit. Donec euismod, tellus sit amet commodo molestie, nunc turpis tincidunt tortor, varius consequat
-        massa eros sed ipsum. Morbi eleifend risus sed mauris elementum in ultrices tortor fermentum. Nunc auctor, mi
-        nec tempor facilisis, nunc orci egestas elit, eu aliquet purus eros vitae libero. Aliquam turpis lectus,
-        hendrerit id lobortis at, faucibus eget dui. Praesent ornare massa placerat nulla vestibulum eu pellentesque est
-        adipiscing.
-      </p>
-      <p>
-        Suspendisse vitae turpis id orci elementum ornare. Proin tempus tortor in velit gravida condimentum. Mauris
-        bibendum nunc quis nibh vulputate egestas. Proin pellentesque, tortor at sodales facilisis, lacus nunc rhoncus
-        felis, a bibendum tortor ante ut massa. Vestibulum interdum posuere feugiat. Morbi pulvinar faucibus pharetra.
-        Nullam nisl massa, consequat sed pellentesque ac, hendrerit at nunc. Curabitur pellentesque est sit amet turpis
-        tempor in venenatis felis hendrerit. Proin dictum molestie consequat.
-      </p>
-      <p>
-        Aliquam erat volutpat. Etiam vel felis eget urna pellentesque venenatis eu et nulla.
-      </p>
-      <p>
-        Suspendisse vitae turpis id orci elementum ornare. Proin tempus tortor in velit gravida condimentum. Mauris
-        bibendum nunc quis nibh vulputate egestas. Proin pellentesque, tortor at sodales facilisis, lacus nunc rhoncus
-        felis, a bibendum tortor ante ut massa. Vestibulum interdum posuere feugiat. Morbi pulvinar faucibus pharetra.
-        Nullam nisl massa, consequat sed pellentesque ac, hendrerit at nunc. Curabitur pellentesque est sit amet turpis
-        tempor in venenatis felis hendrerit. Proin dictum molestie consequat.
-      </p>
-      <p>
-        Suspendisse vitae turpis id orci elementum ornare. Proin tempus tortor in velit gravida condimentum. Mauris
-        bibendum nunc quis nibh vulputate egestas. Proin pellentesque, tortor at sodales facilisis, lacus nunc rhoncus
-        felis, a bibendum tortor ante ut massa. Vestibulum interdum posuere feugiat. Morbi pulvinar faucibus pharetra.
-        Nullam nisl massa, consequat sed pellentesque ac, hendrerit at nunc. Curabitur pellentesque est sit amet turpis
-        tempor in venenatis felis hendrerit. Proin dictum molestie consequat.
-      </p>
-    </div>
+        
+    </section>
+  
   </section>
-
+  <section>
   <div id="blob-container">
     <canvas></canvas>
     <img id="bg" src="./images/parallax-bg.jpg" />
@@ -79,6 +62,4 @@
     <img id="blob-9" src="./images/blob-9.png" />
   </div>
 </section>
-
-
 <script src="js/parallax.js"></script>
