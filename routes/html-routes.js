@@ -17,7 +17,7 @@ module.exports = function (app) {
 	});
 
 	// album page
-	app.get("/album", function (req, res) {
+	app.get("/", function (req, res) {
 		res.render("album");
 	});
 
