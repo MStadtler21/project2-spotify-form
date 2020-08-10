@@ -11,14 +11,14 @@ module.exports = function (app) {
 
 	var stateKey = "spotify_auth_state";
 	/**
-	 * Generates a random string containing numbers and letters
-	 * @param  {number} length The length of the string
-	 * @return {string} The generated string
-	 */
+   * Generates a random string containing numbers and letters
+   * @param  {number} length The length of the string
+   * @return {string} The generated string
+   */
 	var generateRandomString = function (length) {
 		var text = "";
 		var possible =
-			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 		for (var i = 0; i < length; i++) {
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -73,13 +73,13 @@ module.exports = function (app) {
 		var scope = "";
 		res.redirect(
 			"https://accounts.spotify.com/authorize?" +
-			querystring.stringify({
-				response_type: "code",
-				client_id: client_id,
-				scope: scope,
-				redirect_uri: redirect_uri,
-				state: state,
-			})
+        querystring.stringify({
+        	response_type: "code",
+        	client_id: client_id,
+        	scope: scope,
+        	redirect_uri: redirect_uri,
+        	state: state,
+        })
 		);
 	});
 
@@ -95,9 +95,9 @@ module.exports = function (app) {
 		if (state === null || state !== storedState) {
 			res.redirect(
 				"/index" +
-				querystring.stringify({
-					error: "state_mismatch",
-				})
+          querystring.stringify({
+          	error: "state_mismatch",
+          })
 			);
 		} else {
 			res.clearCookie(stateKey);
@@ -110,8 +110,8 @@ module.exports = function (app) {
 				},
 				headers: {
 					Authorization:
-						"Basic " +
-						new Buffer(client_id + ":" + client_secret).toString("base64"),
+            "Basic " +
+            new Buffer(client_id + ":" + client_secret).toString("base64"),
 				},
 				json: true,
 			};
@@ -140,36 +140,46 @@ module.exports = function (app) {
 									} else {
 										db.User.create({
 											displayName: body.display_name,
+<<<<<<< HEAD
+											imgURI: body.images[0].url || "",
+											spotifyUserId: body.id,
+										}).then(function (results) {
+											res.end();
+=======
 											imgURI: body.images[0].url,
 											spotifyUserId: body.id,
 										}).then(function (results) {
 											// res.end();
+>>>>>>> e6accf9013cb7f5b532077143f21713dabfb9831
 										});
 									}
 								}
 							);
 						}
 						isIdUnique(body.id);
+<<<<<<< HEAD
+=======
 						// var isIdUnique = (id) =>
 						//   db.User.findOne({ where: { spotifyUserId: id } })
 						//     .then((token) => token !== null)
 						//     .then((isUnique) => isUnique);
+>>>>>>> e6accf9013cb7f5b532077143f21713dabfb9831
 					});
 
 					// we can also pass the token to the browser to make requests from there
 					res.redirect(
 						"/#" +
-						querystring.stringify({
-							access_token: access_token,
-							refresh_token: refresh_token,
-						})
+              querystring.stringify({
+              	access_token: access_token,
+              	refresh_token: refresh_token,
+              })
 					);
 				} else {
 					res.redirect(
 						"/#" +
-						querystring.stringify({
-							error: "invalid_token",
-						})
+              querystring.stringify({
+              	error: "invalid_token",
+              })
 					);
 				}
 			});
@@ -183,8 +193,8 @@ module.exports = function (app) {
 			url: "https://accounts.spotify.com/api/token",
 			headers: {
 				Authorization:
-					"Basic " +
-					new Buffer(client_id + ":" + client_secret).toString("base64"),
+          "Basic " +
+          new Buffer(client_id + ":" + client_secret).toString("base64"),
 			},
 			form: {
 				grant_type: "refresh_token",
