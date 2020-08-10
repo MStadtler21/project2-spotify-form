@@ -28,9 +28,6 @@ let token;
 	} else {}
 })();
 console.log(token);
-<<<<<<< HEAD
-
-=======
 $("#album-search").on("click", function(event) {
 	console.log("test")
 	event.preventDefault();
@@ -85,4 +82,3 @@ $("#album-add").on("click", function(event) {
 	
 
 }); 
->>>>>>> 0dbb01d035bd52cd4a2759ecdda057a1f5b34270
