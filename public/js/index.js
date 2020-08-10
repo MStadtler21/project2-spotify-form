@@ -47,6 +47,7 @@ let token;
 		});
 	}
 
+	
 	function getHashParams() {
 		var hashParams = {};
 		var e,
