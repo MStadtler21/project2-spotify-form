@@ -16,8 +16,10 @@ module.exports = function (app) {
 		res.render("index");
 	});
 
+
+
 	// album page
-	app.get("/", function (req, res) {
+	app.get("/albums/:id", function (req, res) {
 		res.render("album");
 	});
 
