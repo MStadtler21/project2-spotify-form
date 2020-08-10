@@ -1,7 +1,19 @@
-let token;
+let parameters;
 
 (function () {
 	console.log("load");
+
+	function getHashParams() {
+		var hashParams = {};
+		var e,
+			r = /([^&;=]+)=?([^&;]*)/g,
+			q = window.location.hash.substring(1);
+		while ((e = r.exec(q))) {
+			hashParams[e[1]] = decodeURIComponent(e[2]);
+		}
+		return hashParams;
+	}
+
 	/**
    * Obtains parameters from the hash of the URL
    * @return Object
@@ -18,12 +30,12 @@ let token;
 		var html = "";
 		for (var i = 0; i < response.length; i++) {
 			var spotify_id = response[i].spotify_id;
-			var imgURLLarge = response[i].imgURLLarge;
+			var imgURLMed = response[i].imgURLMed;
 			var title = response[i].title;
 			var artist = response[i].artist;
 
 			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg" data-id="${spotify_id}">`;
-			html += `<img class="w-full" src = "${imgURLLarge}" alt = "Album Cover" id = "album-cover-large" />`;
+			html += `<img class="w-full" src = "${imgURLMed}" alt = "Album Cover" id = "album-cover-large" />`;
 			html += "<div class=\"px-6 py-4\"></div>";
 			html += "<div class=\"font-bold text-xl mb-2\">";
 			html += `<h3 class="text-black" id="album-title">${title}</h3>`;
@@ -37,9 +49,9 @@ let token;
 			console.log($(this).data("id"));
 
 			$.ajax({
-				url: "/albums/:id",
+				url: `/albums/${$(this).data("id")}`,
 				method: "POST",
-				data: { token: token.access_token, id: $(this).data("id") },
+				data: { token: parameters.access_token, id: $(this).data("id") },
 			}).then(function (response) {
 				console.log(response);
 				$("").text(JSON.stringify(response));
@@ -47,20 +59,10 @@ let token;
 		});
 	}
 
-	function getHashParams() {
-		var hashParams = {};
-		var e,
-			r = /([^&;=]+)=?([^&;]*)/g,
-			q = window.location.hash.substring(1);
-		while ((e = r.exec(q))) {
-			hashParams[e[1]] = decodeURIComponent(e[2]);
-		}
-		return hashParams;
-	}
 	// get token from url
-	token = getHashParams();
+	parameters = getHashParams();
 
-	if (token.access_token) {
+	if (parameters.access_token) {
 		// delete token from url
 		document.location.href = document.location.href.slice(
 			0,
@@ -72,7 +74,7 @@ let token;
 		$("#login").show();
 	}
 })();
-console.log(token);
+console.log(parameters);
 
 $("#album-search").on("click", function (event) {
 	console.log("test");
@@ -108,7 +110,7 @@ $("#album-add").on("click", function (event) {
 	if (token.access_token) {
 		console.log("albumAdd");
 		$.ajax({
-			url: `/add/${id}/${token.access_token}`,
+			url: `/add/${id}/${parameters.access_token}`,
 			method: "GET",
 		}).then(function (response) {
 			$("").text(JSON.stringify(response));
