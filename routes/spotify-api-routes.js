@@ -1,12 +1,15 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 var db = require("../models");
 var request = require("request"); // "Request" library
 var querystring = require("querystring");
 
-module.exports = function (app) {
 
+
+module.exports = function (app) {
+  console.log(db)
 	var client_id = "3b0d3695fb3e46f199fd7ee4d52c6f1a"; // Your client id
 	var client_secret = "b27677b64963453c9bc757b665aac458"; // Your secret
-	var redirect_uri = "http://localhost:8888/auth-user"; // Your redirect uri
+	var redirect_uri = ""; // Your redirect uri
 
 	var stateKey = "spotify_auth_state";
 	/**
@@ -25,16 +28,31 @@ module.exports = function (app) {
 		return text;
 	};
 
-	//
-	app.get("/api/authors", function (req, res) {
-		// 1. Add a join to include all of each Author's Posts
-		db.Author.findAll({}).then(function (dbAuthor) {
-			res.json(dbAuthor);
-		});
-	});
+  app.get("/add/:id", (req,res) => {
+    id = req.params.id
+    redirect_uri = "http://localhost:8888/auth-album"; // Your redirect uri
+    var state = generateRandomString(16);
+		res.cookie(stateKey, state);
+		// console.log(res.cookie(stateKey, state))
+
+		// your application requests authorization
+		var scope = "";
+		res.redirect(
+			"https://accounts.spotify.com/authorize?" +
+			querystring.stringify({
+				response_type: "code",
+				client_id: client_id,
+				scope: scope,
+				redirect_uri: redirect_uri,
+        state: state,
+        id: id
+			})
+		);
+  })
 
 	app.get("/login", function (req, res) {
-		// console.log(req)
+    redirect_uri = "http://localhost:8888/auth-user"; // Your redirect uri
+		
 		var state = generateRandomString(16);
 		res.cookie(stateKey, state);
 		// console.log(res.cookie(stateKey, state))
@@ -91,18 +109,21 @@ module.exports = function (app) {
 					var access_token = body.access_token,
 						refresh_token = body.refresh_token;
 					console.log(access_token);
-					let id = "0sNOF9WDwhWunNAHPD3Baj";
-					var options = {
-						url: `https://api.spotify.com/v1/albums/${id}`,
-						headers: { Authorization: "Bearer " + access_token },
-						json: true,
-					};
-
+          let id = "0sNOF9WDwhWunNAHPD3Baj";
+          
+          // album
 					// var options = {
-					//   url: 'https://api.spotify.com/v1/me',
-					//   headers: { 'Authorization': 'Bearer ' + access_token },
-					//   json: true
+					// 	url: `https://api.spotify.com/v1/albums/${id}`,
+					// 	headers: { Authorization: "Bearer " + access_token },
+					// 	json: true,
 					// };
+
+          // profile info
+					var options = {
+					  url: 'https://api.spotify.com/v1/me',
+					  headers: { 'Authorization': 'Bearer ' + access_token },
+					  json: true
+					};
 
 					// use the access token to access the Spotify Web API
 					request.get(options, function (error, response, body) {
