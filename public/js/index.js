@@ -51,7 +51,7 @@ let parameters;
 			$.ajax({
 				url: `/albums/${$(this).data("id")}`,
 				method: "POST",
-				data: { token: parameters.access_token, id: $(this).data("id") },
+				data: { parameters: parameters.access_token, id: $(this).data("id") },
 			}).then(function (response) {
 				console.log(response);
 				$("").text(JSON.stringify(response));
@@ -106,8 +106,8 @@ $("#album-add").on("click", function (event) {
 	id = id.split(":");
 	id = id[2];
 	console.log(id);
-	console.log(token.access_token);
-	if (token.access_token) {
+	console.log(parameters.access_token);
+	if (parameters.access_token) {
 		console.log("albumAdd");
 		$.ajax({
 			url: `/add/${id}/${parameters.access_token}`,
