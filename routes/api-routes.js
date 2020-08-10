@@ -3,11 +3,15 @@ var { Album, Comment } = require("../models");
 
 module.exports = function (app) {
 
-	app.get("/api/albums", function (req, res) {
-		Album.findAll({})
-			.then(function (dbAlbums) {
-				res.json(dbAlbums);
-			});
+	app.get("/api/albums/all", function (req, res) {
+		var query = {};
+		Album.findAll({
+			where: query,
+			raw: true
+		}).then(function (dbAlbum) {
+			console.log(dbAlbum);
+			res.json(dbAlbum);
+		});
 	});
 
 	app.get("/api/albums/:id", function (req, res) {

@@ -1,56 +1,52 @@
 <section id="content">
 
-  <section id="part-1">
+	<section id="part-1">
 
 
-    <section>
-      <div class="grid text-black p-8">
-        <div class="bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg">
-          <img class="w-full" src="/img/card-top.jpg" alt="Album Cover" />
-          <div class="px-6 py-4"></div>
-          <div class="font-bold text-xl mb-2">
-            <h3 class="text-black">Album Title</h3>
-          </div>
-        </div>
+		<section>
+			<div class="grid text-black p-8">
+				{{ eachalbum}}
+				<div class="w-full ml-56 p-8 grid grid-cols-1">
+					<div class="w-full p-8">
+						<div class="bg-white w-1/2 flex items-center rounded-full shadow-xl">
+							<input
+								class="float-center rounded-l-full w-4/5 py-4 px-6 text-gray-700 leading-tight focus:outline-none"
+								id="comment" type="text" placeholder="">
 
-        <div class="w-full ml-56 p-8 grid grid-cols-1">
-          <div class="w-full p-8">
-            <div class="bg-white w-1/2 flex items-center rounded-full shadow-xl">
-              <input class="float-center rounded-l-full w-4/5 py-4 px-6 text-gray-700 leading-tight focus:outline-none"
-                id="comment" type="text" placeholder="">
+							<button
+								class="bg-green-400 rounded-full p-4 hover:bg-green-400 focus:outline-none w-1/5 h-16 flex items-center justify-center text-black"
+								id="submit-comment">Comment</button>
+						</div>
+					</div>
+				</div>
+				<div class="w-full ml-56 grid grid-cols-1">
+					<div class="bg-green-500 p-8 ml-16 max-w-md text-center rounded overflow-hidden shadow-lg"
+						id="user-post">User
+						Post
+						<div>
+							<div class="float-left" id="user">User</div>
+							<div class="float-right" id="date">Date</div>
+						</div>
+					</div>
 
-              <button
-                class="bg-green-400 rounded-full p-4 hover:bg-green-400 focus:outline-none w-1/5 h-16 flex items-center justify-center text-black"
-                id="submit-comment">Comment</button>
-            </div>
-          </div>
-        </div>
-        <div class="w-full ml-56 grid grid-cols-1">
-          <div class="bg-green-500 p-8 ml-16 max-w-md text-center rounded overflow-hidden shadow-lg" id="user-post">User
-            Post
-            <div>
-              <div class="float-left" id="user">User</div>
-              <div class="float-right" id="date">Date</div>
-            </div>
-          </div>
+				</div>
+				{{/each}}
+		</section>
 
-        </div>
-    </section>
-
-  </section>
-  <section>
-    <div id="blob-container">
-      <canvas></canvas>
-      <img id="bg" src="./images/parallax-bg.jpg" />
-      <img id="blob-1" src="./images/blob-1.png" />
-      <img id="blob-2" src="./images/blob-2.png" />
-      <img id="blob-3" src="./images/blob-3.png" />
-      <img id="blob-4" src="./images/blob-4.png" />
-      <img id="blob-5" src="./images/blob-5.png" />
-      <img id="blob-6" src="./images/blob-6.png" />
-      <img id="blob-7" src="./images/blob-7.png" />
-      <img id="blob-8" src="./images/blob-8.png" />
-      <img id="blob-9" src="./images/blob-9.png" />
-    </div>
-  </section>
-  <script src="js/parallax.js"></script>
+	</section>
+	<section>
+		<div id="blob-container">
+			<canvas></canvas>
+			<img id="bg" src="./images/parallax-bg.jpg" />
+			<img id="blob-1" src="./images/blob-1.png" />
+			<img id="blob-2" src="./images/blob-2.png" />
+			<img id="blob-3" src="./images/blob-3.png" />
+			<img id="blob-4" src="./images/blob-4.png" />
+			<img id="blob-5" src="./images/blob-5.png" />
+			<img id="blob-6" src="./images/blob-6.png" />
+			<img id="blob-7" src="./images/blob-7.png" />
+			<img id="blob-8" src="./images/blob-8.png" />
+			<img id="blob-9" src="./images/blob-9.png" />
+		</div>
+	</section>
+	<script src="js/parallax.js"></script>
