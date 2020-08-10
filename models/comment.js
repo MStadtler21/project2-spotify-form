@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
 			defaultValue: DataTypes.NOW
 		},
 		spotify_id: {
-			type: DataTypes.INTEGER
+			type: DataTypes.STRING
 		}
 	});
 
