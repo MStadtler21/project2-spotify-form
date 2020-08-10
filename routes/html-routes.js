@@ -17,11 +17,10 @@ module.exports = function (app) {
 	});
 
 	// album page
-	app.post("/albums/:id", function (req, res) {
-		console.log("hit");
-		console.log(req.body);
-		res.render("album");
-	});
+	// app.post("/albums/:id", function (req, res) {
+		
+	// 	res.sendFile(path.join(__dirname,"../public/html/album.html"));
+	// });
 
 	// route testing
 	app.get("/route-test", function (req, res) {

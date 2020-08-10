@@ -13,6 +13,24 @@ section {
 	margin: 0 auto;
 }
 
+.content {
+	/* margin: 0 auto;
+	width: 650px;
+	vertical-align: top;
+
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	-ms-column-count: 2;
+	-o-column-count: 2;
+	column-count: 2;
+
+	-webkit-column-gap: 30px;
+	-moz-column-gap: 30px;
+	-ms-column-gap: 30px;
+	-o-column-gap: 30px;
+	column-gap: 30px; */
+}
+
 section#content {
 	width: 800px;
 	overflow: hidden;
@@ -69,10 +87,10 @@ p {
 
 section#part-1 {
 	position: absolute;
-	top: 470px;
+	top: 30px;
 	z-index: 1;
 }
-
+/* 
 section#part-2 {
 	position: absolute;
 	top: 1440px;
@@ -83,7 +101,7 @@ section#part-3 {
 	position: absolute;
 	top: 2180px;
 	z-index: 3;
-}
+} */
 
 header {
 	display: block;
