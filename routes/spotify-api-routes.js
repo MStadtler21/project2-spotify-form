@@ -4,8 +4,8 @@ var querystring = require("querystring");
 
 module.exports = function (app) {
 
-	var client_id = "3b0d3695fb3e46f199fd7ee4d52c6f1a"; // Your client id
-	var client_secret = "b27677b64963453c9bc757b665aac458"; // Your secret
+	var client_id = process.env.CLIENT_ID; // Your client id
+	var client_secret = process.env.CLIENT_SECRET; // Your secret
 	var redirect_uri = "http://localhost:8888/"; // Your redirect uri
 
 	var stateKey = "spotify_auth_state";
