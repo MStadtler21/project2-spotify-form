@@ -2,6 +2,15 @@ let token;
 
 (function () {
 	console.log("load");
+
+	// load albums from db
+	$.ajax({
+		url: `/api/albums/`,
+		method: "GET",
+	}).then(function (response) {
+		$("").text(JSON.stringify(response));
+	});
+
 	/**
    * Obtains parameters from the hash of the URL
    * @return Object
