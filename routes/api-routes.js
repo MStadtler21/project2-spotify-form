@@ -13,14 +13,14 @@ module.exports = function (app) {
 	app.get("/api/albums/:id", function (req, res) {
 		Album.findOne({
 			where: {
-				title: req.body.title
+				title: req.body.id
 			}
 		}).then(function (dbAlbum) {
 			res.json(dbAlbum);
 		});
 	});
 
-	app.get("/api/search/:title", function (req, res) {
+	app.get("/api/albums/:title", function (req, res) {
 		Album.findOne({
 			where: {
 				id: req.params.title
