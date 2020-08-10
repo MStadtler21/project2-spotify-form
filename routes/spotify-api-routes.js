@@ -150,10 +150,6 @@ module.exports = function (app) {
 							);
 						}
 						isIdUnique(body.id);
-						// var isIdUnique = (id) =>
-						//   db.User.findOne({ where: { spotifyUserId: id } })
-						//     .then((token) => token !== null)
-						//     .then((isUnique) => isUnique);
 					});
 
 					// we can also pass the token to the browser to make requests from there
