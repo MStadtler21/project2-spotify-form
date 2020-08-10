@@ -145,7 +145,7 @@ module.exports = function (app) {
 									} else {
 										db.User.create({
 											displayName: body.display_name,
-											imgURI: body.images[0].url,
+											imgURL: body.images[0].url,
 											spotifyUserId: body.id,
 										}).then(function (results) {
 											// res.end();
