@@ -1,17 +1,17 @@
 
-var db = require("../models");
+var { Album, Comment } = require("../models");
 
 module.exports = function (app) {
 
 	app.get("/api/albums", function (req, res) {
-		db.Album.findAll({})
+		Album.findAll({})
 			.then(function (dbAlbums) {
 				res.json(dbAlbums);
 			});
 	});
 
-	app.get("/api/album:id", function (req, res) {
-		db.Album.findOne({
+	app.get("/api/albums/:id", function (req, res) {
+		Album.findOne({
 			where: {
 				title: req.body.title
 			}
@@ -21,7 +21,7 @@ module.exports = function (app) {
 	});
 
 	app.get("/api/search/:title", function (req, res) {
-		db.Album.findOne({
+		Album.findOne({
 			where: {
 				id: req.params.title
 			}
@@ -32,7 +32,7 @@ module.exports = function (app) {
 
 	app.post("/api/comment/:id", function (req, res) {
 		console.log("req.body is", req.body);
-		db.Comment.create({
+		Comment.create({
 			UserId: req.body.UserId,
 			text: req.body.text,
 			author: req.body.author,
