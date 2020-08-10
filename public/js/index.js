@@ -83,7 +83,7 @@ $("#album-add").on("click", function (event) {
 	console.log(id);
 
 	if (token.access_token) {
-    console.log("albumAdd");
+		console.log("albumAdd");
 		$.ajax({
 			url: `/add/${id}/${token.access_token}`,
 			method: "GET",
