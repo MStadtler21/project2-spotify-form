@@ -106,8 +106,8 @@ $("#album-add").on("click", function (event) {
 	id = id.split(":");
 	id = id[2];
 	console.log(id);
-
-	if (parameters.access_token) {
+	console.log(token.access_token);
+	if (token.access_token) {
 		console.log("albumAdd");
 		$.ajax({
 			url: `/add/${id}/${parameters.access_token}`,
