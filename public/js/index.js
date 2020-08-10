@@ -2,15 +2,6 @@ let token;
 
 (function () {
 	console.log("load");
-
-	// load albums from db
-	$.ajax({
-		url: `/api/albums/`,
-		method: "GET",
-	}).then(function (response) {
-		$("").text(JSON.stringify(response));
-	});
-
 	/**
    * Obtains parameters from the hash of the URL
    * @return Object
@@ -78,7 +69,7 @@ $("#album-search").on("click", function (event) {
 	var album = $("#search-input").val();
 
 	$.ajax({
-		url: `/ api / search / ${album} `,
+		url: "/api /search /${album}",
 		method: "GET",
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
@@ -99,7 +90,7 @@ $("#submit-comment").on("click", function (event) {
 	console.log("dummy2");
 	var text = $("#comment-text").val();
 	$.ajax({
-		url: `/ api / comment / ${text} `,
+		url: "/api/comment/${text}",
 		method: "POST",
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
@@ -115,7 +106,7 @@ $("#album-add").on("click", function (event) {
 	if (token.access_token) {
 		console.log("albumAdd");
 		$.ajax({
-			url: `/ add / ${id} /${token.access_token}`,
+			url: "/add/${id}/${token.access_token}",
 			method: "GET",
 		}).then(function (response) {
 			$("").text(JSON.stringify(response));
