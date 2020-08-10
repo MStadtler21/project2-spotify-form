@@ -34,6 +34,10 @@ module.exports = function (app) {
 		});
 	});
 
+	app.get("/api/comment/:id", function (req, res) {
+		console.log(req, res);
+	});
+
 	app.post("/api/comment/:id", function (req, res) {
 		console.log("req.body is", req.body);
 		Comment.create({

@@ -22,7 +22,7 @@ let token;
 			var title = response[i].title;
 			var artist = response[i].artist;
 
-			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg data-id="${spotify_id}">`;
+			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg" data-id="${spotify_id}">`;
 			html += `<img class="w-full" src = "${imgURLLarge}" alt = "Album Cover" id = "album-cover-large" />`;
 			html += `<div class="px-6 py-4"></div>`;
 			html += `<div class="font-bold text-xl mb-2">`;
