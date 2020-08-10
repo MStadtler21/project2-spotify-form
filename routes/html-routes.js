@@ -16,8 +16,14 @@ module.exports = function (app) {
 		res.render("index");
 	});
 
+
+
 	// album page
+<<<<<<< HEAD
 	app.get("/album", function (req, res) {
+=======
+	app.get("/albums/:id", function (req, res) {
+>>>>>>> 7d8ad6f1b82cf7f544da1993e79a7b4878fd01cd
 		res.render("album");
 	});
 

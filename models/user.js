@@ -7,13 +7,13 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		imgURI: {
+		imgURL: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: true
 		},
 		albums: {
 			type: DataTypes.STRING,
-			allowNull: false
+			// allowNull: false
 		},
 		spotifyUserId: {
 			type: DataTypes.STRING,
