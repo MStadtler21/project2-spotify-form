@@ -1,14 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./css/tailwind.css" type="text/css" />
-    <link rel="stylesheet" href="./css/style.css" type="text/css" />
-		<title>Chatify</title>
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="./js/index.js"></script>
-	</head>
-	<body>
-		{{{ body }}}
-	</body>
+	<link rel="stylesheet" href="./css/style.css" type="text/css" />
+	<title>Chatify</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+
+<body>
+	<section class="fixed items-center flex flex-col float-left w-1/4">
+		<header class="flex ">
+			<h3>Chatify</h3>
+		</header>
+
+		{{!-- database search  --}}
+		<div class="w-full p-8">
+			<div class="bg-white w-auto flex items-center rounded-full shadow-xl">
+				<input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="search-input"
+					type="text" placeholder="Find Some Music">
+				<div class="p-4">
+					<button
+						class="bg-green-400 text-white rounded-full p-2 hover:bg-green-400 focus:outline-none w-14 h-12 flex items-center justify-center"
+						id="album-search">
+						Search
+					</button>
+				</div>
+			</div>
+		</div>
+
+		{{!-- spotify add an album  --}}
+		<div class="w-full p-8">
+			<div class="bg-white w-auto flex items-center rounded-full shadow-xl">
+				<input class="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none" id="id-input"
+					type="text" placeholder="Enter Spotify ID">
+				<div class="p-4">
+					<button
+						class="w-1/2 m-6 rounded-full flex shadow bg-green-400 px-4 py-2 text-center text-white hover:bg-green-400"
+						id="album-add">
+						Add
+					</button>
+				</div>
+			</div>
+		</div>
+
+		{{!-- spotify login  --}}
+		<a href="/login"><button
+				class="w-1/2 m-6 rounded-full flex shadow bg-green-400 px-4 py-2 text-center text-white hover:bg-green-400"
+				id="login">
+				Login to Spotify
+			</button></a>
+
+	</section>
+	{{{ body }}}
+	<script src="./js/index.js"></script>
+</body>
+
 </html>

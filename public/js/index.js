@@ -25,60 +25,56 @@ let token;
 			0,
 			document.location.href.indexOf("access_token")
 		);
-	} else {}
+	} else {
+	}
 })();
 console.log(token);
-$("#album-search").on("click", function(event) {
-	console.log("test")
+$("#album-search").on("click", function (event) {
+	console.log("test");
 	event.preventDefault();
 
 	var album = $("#search-input").val();
 
 	$.ajax({
 		url: "",
-		method: "GET"
-	}).then(function(response) {
+		method: "GET",
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-
-      
 });
-$(".album-card").on("click", function(event) {
+$(".album-card").on("click", function (event) {
 	console.log("dummy");
-	
+
 	$.ajax({
 		url: "",
-		method: "GET"
-	}).then(function(response) {
+		method: "GET",
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-
 });
 
-$("#submit-comment").on("click", function(event){
+$("#submit-comment").on("click", function (event) {
 	console.log("dummy2");
-	
+  var text = $("#comment-text").val();
 	$.ajax({
 		url: "",
-		method: "GET"
-	}).then(function(response) {
+		method: "POST",
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-	
 });
-$("#album-add").on("click", function(event) {
+
+$("#album-add").on("click", function (event) {
 	console.log("albumAdd");
-	var id = $("#id-input").val();
+  var id = $("#id-input").val();
+  console.log(id)
 
-
-	if(token.length>1){
+	if (token.length > 1) {
 		$.ajax({
 			url: `/add/${id}/${token}`,
-			method: "GET"
-		}).then(function(response) {
+			method: "POST",
+		}).then(function (response) {
 			$("").text(JSON.stringify(response));
 		});
 	}
-	
-
-}); 
+});
