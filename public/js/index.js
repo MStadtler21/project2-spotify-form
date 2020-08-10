@@ -3,9 +3,10 @@ let token;
 (function () {
 	console.log("load");
 	/**
-   * Obtains parameters from the hash of the URL
-   * @return Object
-   */
+	 * Obtains parameters from the hash of the URL
+	 * @return Object
+	 */
+
 	function getHashParams() {
 		var hashParams = {};
 		var e,
@@ -25,10 +26,10 @@ let token;
 			0,
 			document.location.href.indexOf("access_token")
 		);
-	} else {}
+	} else { }
 })();
 console.log(token);
-$("#album-search").on("click", function(event) {
+$("#album-search").on("click", function (event) {
 	console.log("test")
 	event.preventDefault();
 
@@ -37,48 +38,48 @@ $("#album-search").on("click", function(event) {
 	$.ajax({
 		url: "",
 		method: "GET"
-	}).then(function(response) {
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
 
-      
+
 });
-$(".album-card").on("click", function(event) {
+$(".album-card").on("click", function (event) {
 	console.log("dummy");
-	
+
 	$.ajax({
 		url: "",
 		method: "GET"
-	}).then(function(response) {
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
 
 });
 
-$("#submit-comment").on("click", function(event){
+$("#submit-comment").on("click", function (event) {
 	console.log("dummy2");
-	
+
 	$.ajax({
 		url: "",
 		method: "GET"
-	}).then(function(response) {
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-	
+
 });
-$("#album-add").on("click", function(event) {
+$("#album-add").on("click", function (event) {
 	console.log("albumAdd");
 	var id = $("#id-input").val();
 
 
-	if(token.length>1){
+	if (token.length > 1) {
 		$.ajax({
 			url: `/add/${id}/${token}`,
 			method: "GET"
-		}).then(function(response) {
+		}).then(function (response) {
 			$("").text(JSON.stringify(response));
 		});
 	}
-	
+
 
 }); 
