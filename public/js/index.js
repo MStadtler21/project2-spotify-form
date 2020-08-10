@@ -6,6 +6,7 @@ let token;
 	 * Obtains parameters from the hash of the URL
 	 * @return Object
 	 */
+
 	function getHashParams() {
 		var hashParams = {};
 		var e,
@@ -28,83 +29,57 @@ let token;
 	} else { }
 })();
 console.log(token);
-// (function () {
-//   /**
-//    * Obtains parameters from the hash of the URL
-//    * @return Object
-//    */
-//   function getHashParams() {
-//     var hashParams = {};
-//     var e,
-//       r = /([^&;=]+)=?([^&;]*)/g,
-//       q = window.location.hash.substring(1);
-//     while ((e = r.exec(q))) {
-//       hashParams[e[1]] = decodeURIComponent(e[2]);
-//     }
-//     return hashParams;
-//   }
-//   var params = getHashParams();
-//   console.log(params)
+$("#album-search").on("click", function (event) {
+	console.log("test")
+	event.preventDefault();
 
-//   var access_token = params.access_token,
-//     refresh_token = params.refresh_token,
-//     error = params.error;
-//   // var userProfileSource = document.getElementById("user-profile-template")
-//   //     .innerHTML,
-//   //   userProfileTemplate = Handlebars.compile(userProfileSource),
-//   //   userProfilePlaceholder = document.getElementById("user-profile");
+	var album = $("#search-input").val();
 
-//   // var oauthSource = document.getElementById("oauth-template").innerHTML,
-//   //   oauthTemplate = Handlebars.compile(oauthSource),
-//   //   oauthPlaceholder = document.getElementById("oauth");
+	$.ajax({
+		url: "",
+		method: "GET"
+	}).then(function (response) {
+		$("").text(JSON.stringify(response));
+	});
 
-//   if (error) {
-//     alert("There was an error during the authentication");
-//   } else {
-//     if (access_token) {
-//       // render oauth info
-//       oauthPlaceholder.innerHTML = oauthTemplate({
-//         access_token: access_token,
-//         refresh_token: refresh_token,
-//       });
 
-//       $.ajax({
-//         url: "https://api.spotify.com/v1/me",
-//         headers: {
-//           Authorization: "Bearer " + access_token,
-//         },
-//         success: function (response) {
-//           userProfilePlaceholder.innerHTML = userProfileTemplate(
-//             response
-//           );
+});
+$(".album-card").on("click", function (event) {
+	console.log("dummy");
 
-//           $("#login").hide();
-//           $("#loggedin").show();
-//         },
-//       });
-//     } else {
-//       // render initial screen
-//       $("#login").show();
-//       $("#loggedin").hide();
-//     }
+	$.ajax({
+		url: "",
+		method: "GET"
+	}).then(function (response) {
+		$("").text(JSON.stringify(response));
+	});
 
-//     // document.getElementById("obtain-new-token").addEventListener(
-//     //   "click",
-//     //   function () {
-//     //     $.ajax({
-//     //       url: "/refresh_token",
-//     //       data: {
-//     //         refresh_token: refresh_token,
-//     //       },
-//     //     }).done(function (data) {
-//     //       access_token = data.access_token;
-//     //       oauthPlaceholder.innerHTML = oauthTemplate({
-//     //         access_token: access_token,
-//     //         refresh_token: refresh_token,
-//     //       });
-//     //     });
-//     //   },
-//     //   false
-//     // );
-//   }
-// })();
+});
+
+$("#submit-comment").on("click", function (event) {
+	console.log("dummy2");
+
+	$.ajax({
+		url: "",
+		method: "GET"
+	}).then(function (response) {
+		$("").text(JSON.stringify(response));
+	});
+
+});
+$("#album-add").on("click", function (event) {
+	console.log("albumAdd");
+	var id = $("#id-input").val();
+
+
+	if (token.length > 1) {
+		$.ajax({
+			url: `/add/${id}/${token}`,
+			method: "GET"
+		}).then(function (response) {
+			$("").text(JSON.stringify(response));
+		});
+	}
+
+
+}); 
