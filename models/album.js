@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 	Album.associate = function (models) {
 		Album.hasMany(models.Comment, {
 			foreignKey: {
-				allowNull: false
+				allowNull: true
 			}
 		});
 	};
