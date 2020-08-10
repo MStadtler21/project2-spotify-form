@@ -2,10 +2,20 @@ let token;
 
 (function () {
 	console.log("load");
+
+	// load albums from db
+	$.ajax({
+		url: `/api/albums/`,
+		method: "GET",
+	}).then(function (response) {
+		$("").text(JSON.stringify(response));
+	});
+
 	/**
    * Obtains parameters from the hash of the URL
    * @return Object
    */
+
 	function getHashParams() {
 		var hashParams = {};
 		var e,
@@ -25,60 +35,60 @@ let token;
 			0,
 			document.location.href.indexOf("access_token")
 		);
-	} else {}
+
+		$("#login").hide();
+	} else {
+		$("#login").show();
+	}
 })();
 console.log(token);
-$("#album-search").on("click", function(event) {
-	console.log("test")
+
+$("#album-search").on("click", function (event) {
+	console.log("test");
 	event.preventDefault();
 
 	var album = $("#search-input").val();
 
 	$.ajax({
-		url: "",
-		method: "GET"
-	}).then(function(response) {
+		url: `/api/search/${album}`,
+		method: "GET",
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-
-      
 });
-$(".album-card").on("click", function(event) {
+$(".album-card").on("click", function (event) {
 	console.log("dummy");
-	
+
 	$.ajax({
 		url: "",
-		method: "GET"
-	}).then(function(response) {
+		method: "GET",
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-
 });
 
-$("#submit-comment").on("click", function(event){
+$("#submit-comment").on("click", function (event) {
 	console.log("dummy2");
-	
+	var text = $("#comment-text").val();
 	$.ajax({
-		url: "",
-		method: "GET"
-	}).then(function(response) {
+		url: `/api/comment/${text}`,
+		method: "POST",
+	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-	
 });
-$("#album-add").on("click", function(event) {
-	console.log("albumAdd");
+
+$("#album-add").on("click", function (event) {
 	var id = $("#id-input").val();
+	console.log(id);
 
-
-	if(token.length>1){
+	if (token.access_token) {
+    console.log("albumAdd");
 		$.ajax({
-			url: `/add/${id}/${token}`,
-			method: "GET"
-		}).then(function(response) {
+			url: `/add/${id}/${token.access_token}`,
+			method: "GET",
+		}).then(function (response) {
 			$("").text(JSON.stringify(response));
 		});
 	}
-	
-
-}); 
+});

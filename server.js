@@ -33,6 +33,7 @@ app
 // ============================
 require("./routes/html-routes.js")(app);
 require("./routes/spotify-api-routes.js")(app);
+require("./routes/api-routes")(app);
 
 // Starts the server to begin listening
 // =============================================================

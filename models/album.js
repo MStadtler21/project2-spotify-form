@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 	const Album = sequelize.define("Album", {
-		spotifyId: {
-			type: DataTypes.INTEGER,
+		spotify_id: {
+			type: DataTypes.STRING,
 			allowNull: false,
 			primaryKey: true
 		},
@@ -13,16 +13,25 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		imgURIsmall: {
+		imgURLMed: {
+			//gallery
 			type: DataTypes.STRING
 		},
-		imgURIMed: {
-			type: DataTypes.STRING
-		},
-		imgURILarge: {
+		imgURLLarge: {
+			//albumPage
 			type: DataTypes.STRING
 		}
+		
 
 	});
+
+	Album.associate = function (models) {
+		Album.hasMany(models.Comment, {
+			foreignKey: {
+				allowNull: true
+			}
+		});
+	};
+	
 	return Album;
-}
+};

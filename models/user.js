@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		albums: {
 			type: DataTypes.STRING,
-			allowNull: false
+			// allowNull: false
 		},
 		spotifyUserId: {
 			type: DataTypes.STRING,
@@ -21,5 +21,13 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	});
 
+	User.associate = function (models) {
+		User.hasMany(models.Comment, {
+			foreignKey: {
+				allowNull: false
+			}
+		});
+	};
+
 	return User;
-}
+};
