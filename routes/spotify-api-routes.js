@@ -55,7 +55,12 @@ module.exports = function (app) {
 							imgURLLarge: body.images[0].url,
 						}).then(function (results) {
 							// ! redirect to album page
-							// res.end();
+							res.redirect(
+								"/#" +
+                querystring.stringify({
+                	access_token: token,
+                })
+							);
 						});
 					}
 				});
