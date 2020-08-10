@@ -46,15 +46,16 @@ let parameters;
 		$("#all-albums").append(html);
 
 		$(".album-card").on("click", function (event) {
+			let comment = "";
 			console.log($(this).data("id"));
 
 			$.ajax({
-				url: `/albums/${$(this).data("id")}`,
-				method: "POST",
+				url: `api/albums/${$(this).data("id")}`,
+				method: "GET",
 				data: { parameters: parameters.access_token, id: $(this).data("id") },
 			}).then(function (response) {
 				console.log(response);
-				$("").text(JSON.stringify(response));
+				// $("").text(JSON.stringify(response));
 			});
 		});
 	}
