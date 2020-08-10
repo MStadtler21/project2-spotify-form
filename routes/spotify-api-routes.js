@@ -4,10 +4,10 @@ var request = require("request"); // "Request" library
 var querystring = require("querystring");
 
 module.exports = function (app) {
-	var client_id = "3b0d3695fb3e46f199fd7ee4d52c6f1a"; // Your client id
-	var client_secret = "b27677b64963453c9bc757b665aac458"; // Your secret
-	// var redirect_uri = "https://project-2-chatify.herokuapp.com/"; // production
-	var redirect_uri = "http://localhost:8888/auth-user"; // development
+  var client_id = "3b0d3695fb3e46f199fd7ee4d52c6f1a"; // Your client id
+  var client_secret = "b27677b64963453c9bc757b665aac458"; // Your secret
+  // var redirect_uri = "https://project-2-chatify.herokuapp.com/"; // production
+  var redirect_uri = "http://localhost:8888/auth-user"; // development
 
 	var stateKey = "spotify_auth_state";
 	/**
@@ -181,6 +181,7 @@ module.exports = function (app) {
 				Authorization:
           "Basic " +
           new Buffer(client_id + ":" + client_secret).toString("base64"),
+<<<<<<< HEAD
 			},
 			form: {
 				grant_type: "refresh_token",
@@ -200,4 +201,26 @@ module.exports = function (app) {
 			}
 		});
 	});
+=======
+      },
+      form: {
+        grant_type: "refresh_token",
+        refresh_token: refresh_token,
+      },
+      json: true,
+    };
+
+    request.post(authOptions, function (error, response, body) {
+      if (!error && response.statusCode === 200) {
+        var access_token = body.access_token;
+        // console.log(access_token)
+        // console.log(authOptions)
+        res.send({
+          access_token: access_token,
+        });
+      }
+    });
+  });
+>>>>>>> 796e4a4f1ee5653e1a538733a5c4d17d5dd6a657
+>>>>>>> d652f70c0255b8b0a9888837cc262af00c1c3f6c
 };
