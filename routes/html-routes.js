@@ -19,7 +19,9 @@ module.exports = function (app) {
 
 
 	// album page
-	app.get("/albums/:id", function (req, res) {
+	app.post("/albums/:id", function (req, res) {
+		// let id
+		console.log(req.body);
 		res.render("album");
 	});
 

@@ -22,17 +22,29 @@ let token;
 			var title = response[i].title;
 			var artist = response[i].artist;
 
-			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg data-id="${spotify_id}">`;
+			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg" data-id="${spotify_id}">`;
 			html += `<img class="w-full" src = "${imgURLLarge}" alt = "Album Cover" id = "album-cover-large" />`;
-			html += `<div class="px-6 py-4"></div>`;
-			html += `<div class="font-bold text-xl mb-2">`;
+			html += "<div class=\"px-6 py-4\"></div>";
+			html += "<div class=\"font-bold text-xl mb-2\">";
 			html += `<h3 class="text-black" id="album-title">${title}</h3>`;
 			html += `<h4 class="text-black" id="artist-title">${artist}</h4>`;
-			html += `</div>`;
-			html += `</div >`;
+			html += "</div>";
+			html += "</div >";
 		}
 		$("#all-albums").append(html);
 
+		$(".album-card").on("click", function (event) {
+			console.log($(this).data("id"));
+
+			$.ajax({
+				url: `/albums/:id`
+				method: "POST",
+				data: { token: token.access_token, id: $(this).data("id") },
+			}).then(function (response) {
+				console.log(response);
+				$("").text(JSON.stringify(response));
+			});
+		});
 	}
 
 	function getHashParams() {
@@ -70,16 +82,6 @@ $("#album-search").on("click", function (event) {
 
 	$.ajax({
 		url: `/api/search/${album}`,
-		method: "GET",
-	}).then(function (response) {
-		$("").text(JSON.stringify(response));
-	});
-});
-$(".album-card").on("click", function (event) {
-	console.log("dummy");
-
-	$.ajax({
-		url: "",
 		method: "GET",
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
