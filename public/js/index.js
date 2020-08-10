@@ -37,7 +37,7 @@ let token;
 			console.log($(this).data("id"));
 
 			$.ajax({
-				url: `/albums/:id`,
+				url: "/albums/:id",
 				method: "POST",
 				data: { token: token.access_token, id: $(this).data("id") },
 			}).then(function (response) {

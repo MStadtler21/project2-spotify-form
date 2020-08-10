@@ -56,11 +56,11 @@ module.exports = function (app) {
 						}).then(function (results) {
 							// ! redirect to album page
 							res.redirect(
-                "/#" +
+								"/#" +
                 querystring.stringify({
-                  access_token: token,
+                	access_token: token,
                 })
-              );
+							);
 						});
 					}
 				});
