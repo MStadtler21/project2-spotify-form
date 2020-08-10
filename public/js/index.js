@@ -3,9 +3,9 @@ let token;
 (function () {
 	console.log("load");
 	/**
-	 * Obtains parameters from the hash of the URL
-	 * @return Object
-	 */
+   * Obtains parameters from the hash of the URL
+   * @return Object
+   */
 
 	function getHashParams() {
 		var hashParams = {};
@@ -26,7 +26,8 @@ let token;
 			0,
 			document.location.href.indexOf("access_token")
 		);
-	} else { }
+	} else {
+	}
 })();
 console.log(token);
 
@@ -37,13 +38,11 @@ $("#album-search").on("click", function (event) {
 	var album = $("#search-input").val();
 
 	$.ajax({
-		url: "",
-		method: "GET"
+		url: `/api/search/${album}`,
+		method: "GET",
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-
-
 });
 $(".album-card").on("click", function (event) {
 	console.log("dummy");
@@ -58,29 +57,26 @@ $(".album-card").on("click", function (event) {
 
 $("#submit-comment").on("click", function (event) {
 	console.log("dummy2");
-
+	var text = $("#comment-text").val();
 	$.ajax({
-		url: "",
-		method: "POST"
+		url: `/api/comment/${text}`,
+		method: "POST",
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-
 });
 
 $("#album-add").on("click", function (event) {
-	console.log("albumAdd");
 	var id = $("#id-input").val();
 	console.log(id);
 
-	if (token.length > 1) {
+	if (token.access_token) {
+    console.log("albumAdd");
 		$.ajax({
-			url: `/add/${id}/${token}`,
-			method: "POST",
+			url: `/add/${id}/${token.access_token}`,
+			method: "GET",
 		}).then(function (response) {
 			$("").text(JSON.stringify(response));
 		});
 	}
-
-
-}); 
+});
