@@ -49,7 +49,7 @@ let parameters;
 			console.log($(this).data("id"));
 
 			$.ajax({
-				url: `/albums/:id`,
+				url: `/albums/${$(this).data("id")}`,
 				method: "POST",
 				data: { token: parameters.access_token, id: $(this).data("id") },
 			}).then(function (response) {
@@ -59,8 +59,6 @@ let parameters;
 		});
 	}
 
-
-	
 	// get token from url
 	parameters = getHashParams();
 

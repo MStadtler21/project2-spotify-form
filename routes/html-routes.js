@@ -16,11 +16,9 @@ module.exports = function (app) {
 		res.render("index");
 	});
 
-
-
 	// album page
 	app.post("/albums/:id", function (req, res) {
-		// let id
+		console.log("hit");
 		console.log(req.body);
 		res.render("album");
 	});
