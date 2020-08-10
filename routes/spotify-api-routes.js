@@ -6,8 +6,8 @@ var querystring = require("querystring");
 module.exports = function (app) {
 	var client_id = "3b0d3695fb3e46f199fd7ee4d52c6f1a"; // Your client id
 	var client_secret = "b27677b64963453c9bc757b665aac458"; // Your secret
-  // var redirect_uri = "https://project-2-chatify.herokuapp.com/"; // production
-  var redirect_uri = "http://localhost:8888/auth-user"; // development
+	// var redirect_uri = "https://project-2-chatify.herokuapp.com/"; // production
+	var redirect_uri = "http://localhost:8888/auth-user"; // development
 
 	var stateKey = "spotify_auth_state";
 	/**
@@ -28,10 +28,9 @@ module.exports = function (app) {
 
 	// spotify:album:3PhPBXHydvZGpmUpFec4Ps
 	app.get("/add/:id/:token", (req, res) => {
-		
 		let id = req.params.id;
-    let token = req.params.token;
-    console.log(token);
+		let token = req.params.token;
+		console.log(token);
 
 		// album request
 		var options = {
@@ -42,19 +41,19 @@ module.exports = function (app) {
 
 		// use the access token to receive album data
 		request.get(options, function (error, response, body) {
+      // ! check for album first, then add
+      
 			db.Album.create({
-        spotify_id: id,
-        title: body.name,
-        artist: body.artists[0].name,
-        imgURLMed: body.images[1].url,
-        imgURLLarge: body.images[0].url,
-      }).then(function(results) {
-        // ! redirect to album page
-        // res.end();
-      });
+				spotify_id: id,
+				title: body.name,
+				artist: body.artists[0].name,
+				imgURLMed: body.images[1].url,
+				imgURLLarge: body.images[0].url,
+			}).then(function (results) {
+				// ! redirect to album page
+				// res.end();
+			});
 		});
-
-		
 	});
 
 	app.get("/login", function (req, res) {
@@ -123,8 +122,16 @@ module.exports = function (app) {
 
 					// use the access token to access the Spotify Web API
 					request.get(options, function (error, response, body) {
-						// ! add profile to database
-						// console.log(body);
+						console.log(body);
+						// ! check for entry first, then add
+						db.User.create({
+							displayName: body.display_name,
+							imgURI: body.images[0].url,
+							spotifyUserId: body.id,
+						}).then(function (results) {
+							// res.end();
+						});
+            
 					});
 
 					// we can also pass the token to the browser to make requests from there

@@ -26,7 +26,10 @@ let token;
 			0,
 			document.location.href.indexOf("access_token")
 		);
+
+		$("#login").hide();
 	} else {
+		$("#login").show();
 	}
 })();
 console.log(token);

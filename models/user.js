@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		albums: {
 			type: DataTypes.STRING,
-			allowNull: false
+			// allowNull: false
 		},
 		spotifyUserId: {
 			type: DataTypes.STRING,
