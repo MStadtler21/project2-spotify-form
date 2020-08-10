@@ -29,8 +29,9 @@ let token;
 	} else { }
 })();
 console.log(token);
+
 $("#album-search").on("click", function (event) {
-	console.log("test")
+	console.log("test");
 	event.preventDefault();
 
 	var album = $("#search-input").val();
@@ -49,11 +50,10 @@ $(".album-card").on("click", function (event) {
 
 	$.ajax({
 		url: "",
-		method: "GET"
+		method: "GET",
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
-
 });
 
 $("#submit-comment").on("click", function (event) {
@@ -61,21 +61,22 @@ $("#submit-comment").on("click", function (event) {
 
 	$.ajax({
 		url: "",
-		method: "GET"
+		method: "POST"
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
 	});
 
 });
+
 $("#album-add").on("click", function (event) {
 	console.log("albumAdd");
 	var id = $("#id-input").val();
-
+	console.log(id);
 
 	if (token.length > 1) {
 		$.ajax({
 			url: `/add/${id}/${token}`,
-			method: "GET"
+			method: "POST",
 		}).then(function (response) {
 			$("").text(JSON.stringify(response));
 		});
