@@ -140,16 +140,30 @@ module.exports = function (app) {
 									} else {
 										db.User.create({
 											displayName: body.display_name,
+<<<<<<< HEAD
 											imgURI: body.images[0].url || "",
 											spotifyUserId: body.id,
 										}).then(function (results) {
 											res.end();
+=======
+											imgURI: body.images[0].url,
+											spotifyUserId: body.id,
+										}).then(function (results) {
+											// res.end();
+>>>>>>> e6accf9013cb7f5b532077143f21713dabfb9831
 										});
 									}
 								}
 							);
 						}
 						isIdUnique(body.id);
+<<<<<<< HEAD
+=======
+						// var isIdUnique = (id) =>
+						//   db.User.findOne({ where: { spotifyUserId: id } })
+						//     .then((token) => token !== null)
+						//     .then((isUnique) => isUnique);
+>>>>>>> e6accf9013cb7f5b532077143f21713dabfb9831
 					});
 
 					// we can also pass the token to the browser to make requests from there
