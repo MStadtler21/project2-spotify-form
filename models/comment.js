@@ -7,23 +7,6 @@ module.exports = function (sequelize, DataTypes) {
 			validate: {
 				len: [1, 100]
 			}
-		},
-		author: {
-			type: DataTypes.STRING,
-			allowNull: false,
-		},
-		timePosted: {
-			type: DataTypes.DATE,
-			allowNull: false,
-			defaultValue: DataTypes.NOW
-		},
-		datePosted: {
-			type: DataTypes.DATE,
-			allowNull: false,
-			defaultValue: DataTypes.NOW
-		},
-		spotify_id: {
-			type: DataTypes.STRING
 		}
 	});
 
