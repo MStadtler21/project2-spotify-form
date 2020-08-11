@@ -13,15 +13,27 @@ section {
 	margin: 0 auto;
 }
 
-section#content {
+.content {
+	margin: auto;
+	width: 950px;
+	vertical-align: top;
+
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	-ms-column-count: 2;
+	-o-column-count: 2;
+	column-count: 2;
+}
+
+/* section#content {
 	width: 800px;
 	overflow: hidden;
 	height: 3000px;
 	/*background: url("../../images/parallax-bg.jpg") center 0 repeat-y;*/
 	/*background: -webkit-canvas(blobs) no-repeat top left;*/
-	position: relative;
-	z-index: 0;
-}
+	/* position: relative;
+	z-index: 0; */
+} */
 
 section h1 {
 	position: absolute;
@@ -69,10 +81,10 @@ p {
 
 section#part-1 {
 	position: absolute;
-	top: 470px;
+	top: 30px;
 	z-index: 1;
 }
-
+/* 
 section#part-2 {
 	position: absolute;
 	top: 1440px;
@@ -83,7 +95,7 @@ section#part-3 {
 	position: absolute;
 	top: 2180px;
 	z-index: 3;
-}
+} */
 
 header {
 	display: block;
@@ -107,7 +119,7 @@ header {
 }
 
 #blob-container {
-	position: absolute;
+	
 	left: 0;
 	top: 0;
 	width: 960px;

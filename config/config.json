@@ -16,7 +16,7 @@
 		"dialect": "mysql"
 	},
 	"production": {
-		"username": "root",
+		"username": "ijj1btjwrd3b7932.cbetxkdyhwsb.us-east-1.rds.amazonaws.co",
 		"password": null,
 		"database": "tbd",
 		"host": "",

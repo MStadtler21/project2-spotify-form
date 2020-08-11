@@ -6,8 +6,7 @@ var querystring = require("querystring");
 module.exports = function (app) {
 	var client_id = "3b0d3695fb3e46f199fd7ee4d52c6f1a"; // Your client id
 	var client_secret = "b27677b64963453c9bc757b665aac458"; // Your secret
-	// var redirect_uri = "https://project-2-chatify.herokuapp.com/"; // production
-	var redirect_uri = "http://localhost:8888/auth-user"; // development
+	var redirect_uri = process.env.REDIRECT || "http://localhost:8888/auth-user"; // production || development
 
 	var stateKey = "spotify_auth_state";
 	/**
@@ -18,7 +17,7 @@ module.exports = function (app) {
 	var generateRandomString = function (length) {
 		var text = "";
 		var possible =
-			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 		for (var i = 0; i < length; i++) {
 			text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -31,42 +30,42 @@ module.exports = function (app) {
 		let id = req.params.id;
 		let token = req.params.token;
 		console.log(token);
+		if (id.length > 1 && token.length > 1) {
+			// album request
+			var options = {
+				url: `https://api.spotify.com/v1/albums/${id}`,
+				headers: { Authorization: "Bearer " + token },
+				json: true,
+			};
 
-		// album request
-		var options = {
-			url: `https://api.spotify.com/v1/albums/${id}`,
-			headers: { Authorization: "Bearer " + token },
-			json: true,
-		};
-
-		// use the access token to receive album data
-		request.get(options, function (error, response, body) {
-			// ! check for album first, then add
-			function isIdUnique(id) {
-				return db.Album.count({ where: { spotify_id: id } }).then((count) => {
-					if (count != 0) {
-						return false;
-					} else {
-						db.Album.create({
-							spotify_id: id,
-							title: body.name,
-							artist: body.artists[0].name,
-							imgURLMed: body.images[1].url,
-							imgURLLarge: body.images[0].url,
-						}).then(function (results) {
-							// ! redirect to album page
-							res.redirect(
-								"/#" +
-                querystring.stringify({
-                	access_token: token,
-                })
-							);
-						});
-					}
-				});
-			}
-			isIdUnique(body.id);
-		});
+			// use the access token to receive album data
+			request.get(options, function (error, response, body) {
+				function isIdUnique(id) {
+					return db.Album.count({ where: { spotify_id: id } }).then((count) => {
+						if (count != 0) {
+							return false;
+						} else {
+							db.Album.create({
+								spotify_id: id,
+								title: body.name,
+								artist: body.artists[0].name,
+								imgURLMed: body.images[1].url,
+								imgURLLarge: body.images[0].url,
+							}).then(function (results) {
+								console.log(results);
+								res.redirect(
+									"/#" +
+                    querystring.stringify({
+                    	access_token: token,
+                    })
+								);
+							});
+						}
+					});
+				}
+				isIdUnique(body.id);
+			});
+		}
 	});
 
 	app.get("/login", function (req, res) {
@@ -78,13 +77,13 @@ module.exports = function (app) {
 		var scope = "";
 		res.redirect(
 			"https://accounts.spotify.com/authorize?" +
-			querystring.stringify({
-				response_type: "code",
-				client_id: client_id,
-				scope: scope,
-				redirect_uri: redirect_uri,
-				state: state,
-			})
+        querystring.stringify({
+        	response_type: "code",
+        	client_id: client_id,
+        	scope: scope,
+        	redirect_uri: redirect_uri,
+        	state: state,
+        })
 		);
 	});
 
@@ -100,9 +99,9 @@ module.exports = function (app) {
 		if (state === null || state !== storedState) {
 			res.redirect(
 				"/index" +
-				querystring.stringify({
-					error: "state_mismatch",
-				})
+          querystring.stringify({
+          	error: "state_mismatch",
+          })
 			);
 		} else {
 			res.clearCookie(stateKey);
@@ -115,8 +114,8 @@ module.exports = function (app) {
 				},
 				headers: {
 					Authorization:
-						"Basic " +
-						new Buffer(client_id + ":" + client_secret).toString("base64"),
+            "Basic " +
+            new Buffer(client_id + ":" + client_secret).toString("base64"),
 				},
 				json: true,
 			};
@@ -164,17 +163,17 @@ module.exports = function (app) {
 					// we can also pass the token to the browser to make requests from there
 					res.redirect(
 						"/#" +
-						querystring.stringify({
-							access_token: access_token,
-							refresh_token: refresh_token,
-						})
+              querystring.stringify({
+              	access_token: access_token,
+              	refresh_token: refresh_token,
+              })
 					);
 				} else {
 					res.redirect(
 						"/#" +
-						querystring.stringify({
-							error: "invalid_token",
-						})
+              querystring.stringify({
+              	error: "invalid_token",
+              })
 					);
 				}
 			});
@@ -188,8 +187,8 @@ module.exports = function (app) {
 			url: "https://accounts.spotify.com/api/token",
 			headers: {
 				Authorization:
-					"Basic " +
-					new Buffer(client_id + ":" + client_secret).toString("base64"),
+          "Basic " +
+          new Buffer(client_id + ":" + client_secret).toString("base64"),
 			},
 			form: {
 				grant_type: "refresh_token",
