@@ -34,33 +34,6 @@ $(function () {
       var title = response[i].title;
       var artist = response[i].artist;
 
-<<<<<<< HEAD
-      html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg" data-id="${spotify_id}">`;
-      html += `<img class="w-full" src = "${imgURLMed}" alt = "Album Cover" id = "album-cover-large" />`;
-      html += '<div class="px-6 py-4"></div>';
-      html += '<div class="font-bold text-xl mb-2">';
-      html += `<h3 class="text-black" id="album-title">${title}</h3>`;
-      html += `<h4 class="text-black" id="artist-title">${artist}</h4>`;
-      html += "</div>";
-      html += "</div >";
-    }
-    $("#all-albums").append(html);
-
-    $(".album-card").on("click", function (event) {
-      let comment = "";
-      console.log($(this).data("id"));
-
-      $.ajax({
-        url: `api/albums/${$(this).data("id")}`,
-        method: "GET",
-        data: { parameters: parameters.access_token, id: $(this).data("id") },
-      }).then(function (response) {
-        console.log(response);
-        // $("").text(JSON.stringify(response));
-      });
-    });
-  }
-=======
 			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg" data-id="${spotify_id}">`;
 			html += `<img class="w-full" src = "${imgURLMed}" alt = "Album Cover" id = "album-cover-large" />`;
 			html += "<div class=\"px-6 py-4\"></div>";
@@ -97,7 +70,6 @@ $(function () {
 			});
 		});
 	}
->>>>>>> 008b8b8b7425c52ba0453636122ec950b6d6e073
 
   // get token from url
   parameters = getHashParams();
