@@ -34,11 +34,10 @@ $(function () {
 			var title = response[i].title;
 			var artist = response[i].artist;
 
-		
-			html += `<div class="overflow-hidden sm:my-10 sm:mx-10 sm:px-8 sm:py-6 album-card bg-green-500 p-8 text-center rounded shadow-lg" data-id="${spotify_id}">`;
+			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg" data-id="${spotify_id}">`;
 			html += `<img class="w-full" src = "${imgURLMed}" alt = "Album Cover" id = "album-cover-large" />`;
 			html += "<div class=\"px-6 py-4\"></div>";
-			html += "<div class=\"font-bold text-m mb-2\">";
+			html += "<div class=\"font-bold text-xl mb-2\">";
 			html += `<h3 class="text-black" id="album-title">${title}</h3>`;
 			html += `<h4 class="text-black" id="artist-title">${artist}</h4>`;
 			html += "</div>";
@@ -48,12 +47,12 @@ $(function () {
 			html +=
         "<label class=\"block text-gray-700 text-sm font-bold mb-2\" for=\"comment\">";
 			html += "Comments";
-			html += `</label>`;
+			html += "</label >";
 			html += `<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment-${spotify_id}" type="text" placeholder="comment">`;
-			html += `</div>`;
-			html += `</form > `;
-      html += `</div>`;
-      html += `</div>`;
+			html += "</div>";
+			html += "</form > ";
+			html += "</div>";
+			html += "</div >";
 		}
 		$("#all-albums").append(html);
 		$(".accordion").hide();
@@ -75,9 +74,7 @@ $(function () {
 
 	// get token from url
 	parameters = getHashParams();
-
 	console.log(parameters);
-
 	if (parameters.access_token) {
 		// delete token from url
 		document.location.href = document.location.href.slice(
@@ -96,7 +93,6 @@ $("#album-search").on("click", function (event) {
 	event.preventDefault();
 
 	var album = $("#search-input").val();
-
 
 	$.ajax({
 		url: `/api/search/${album}`,
