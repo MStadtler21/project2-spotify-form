@@ -34,7 +34,12 @@ module.exports = function (app) {
 	});
 
 	app.get("/api/comment/:id", function (req, res) {
-		Comment.findAll().then(function (dbComment) {
+		console.log("req params", req.params.id);
+		Comment.findAll({
+			where: {
+				AlbumSpotifyId: req.params.id
+			}
+		}).then(function (dbComment) {
 			res.json(dbComment);
 		});
 	});
@@ -43,7 +48,6 @@ module.exports = function (app) {
 		console.log("req.body is", req.body);
 		Comment.create({
 			displayName: req.body.author,
-			UserId: 5,
 			text: req.body.text,
 			AlbumSpotifyId: req.body.AlbumSpotifyId,
 		}).then(function () {

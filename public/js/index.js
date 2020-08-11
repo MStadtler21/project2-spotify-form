@@ -27,8 +27,9 @@ $(function () {
 	});
 
 	function processResponse(response) {
+		var responseLength = response.length;
 		var html = "";
-		for (var i = 0; i < response.length; i++) {
+		for (var i = 0; i < responseLength; i++) {
 			var spotify_id = response[i].spotify_id;
 			var imgURLMed = response[i].imgURLMed;
 			var title = response[i].title;
@@ -36,7 +37,6 @@ $(function () {
 
 			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg" data-id="${spotify_id}">`;
 			html += `<img class="w-full" src = "${imgURLMed}" alt = "Album Cover" id = "album-cover-large" />`;
-			html += "<div class=\"px-6 py-4\"></div>";
 			html += "<div class=\"font-bold text-xl mb-2\">";
 			html += `<h3 class="text-black" id="album-title">${title}</h3>`;
 			html += `<h4 class="text-black" id="artist-title">${artist}</h4>`;
@@ -48,6 +48,7 @@ $(function () {
 				"<label class=\"block text-gray-700 text-sm font-bold mb-2\" for=\"comment\">";
 			html += "Comments";
 			html += "</label >";
+			html += `<div id="comment-div-${spotify_id}"></div>`;
 			html += `<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment-${spotify_id}" type="text" placeholder="comment">`;
 			html += `<button class="comment bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" data-id="${spotify_id}">`;
 			html += `Post it!`;
@@ -60,16 +61,21 @@ $(function () {
 		$("#all-albums").append(html);
 		$(".accordion").hide();
 		$(".album-card").on("click", function (event) {
-			let comment = "";
+			event.stopImmediatePropagation();
 			let id = $(this).data("id");
 			$("#comment-drawer-" + id).show();
+			if ($('#comment-div-' + id).is(":empty")) {
+				$.ajax({
+					url: `/api/comment/${id}`,
+					method: "GET",
+				}).then(function (response) {
+					processComments(response);
+				});
+			} else {
+				console.log("open");
 
-			$.ajax({
-				url: `/api/comment/${id}`,
-				method: "GET",
-			}).then(function (response) {
-				processComments(data);
-			});
+
+			}
 
 		});
 
@@ -87,6 +93,7 @@ $(function () {
 				// On success, run the following code
 				.then(function () {
 					console.log("posted");
+					location.reload();
 				});
 		});
 	}
@@ -106,8 +113,21 @@ $(function () {
 		$("#login").show();
 	}
 });
+
 function processComments(response) {
 	console.log(response);
+	console.log("this ", this);
+	var responseLength = response.length;
+	var html = "";
+	var id = response[0].AlbumSpotifyId;
+	for (var i = 0; i < responseLength; i++) {
+		var text = response[i].text;
+		var displayName = response[i].displayName;
+		html += "<div class=\"comments\">";
+		html += `<h5>${displayName}</h5>`;
+		html += `<p>${text}</p>`;
+	}
+	$("#comment-div-" + id).append(html);
 }
 
 $("#album-search").on("click", function (event) {
