@@ -60,14 +60,7 @@ let parameters;
 			let id = $(this).data("id");
 			console.log(id);
 			$("#comment-drawer-" + id).show();
-			$.ajax({
-				url: `api / albums / ${$(this).data("id")} `,
-				method: "GET",
-				data: { parameters: parameters.access_token, id: $(this).data("id") },
-			}).then(function (response) {
-				console.log(response);
-				// $("").text(JSON.stringify(response));
-			});
+
 		});
 	}
 
