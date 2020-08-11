@@ -34,6 +34,7 @@ let parameters;
 			var title = response[i].title;
 			var artist = response[i].artist;
 
+			html += `<div class="w-full ml-56 p-8 grid grid-cols-3">`;
 			html += `<div class="album-card bg-green-500 p-8 ml-64 max-w-lg text-center rounded overflow-hidden shadow-lg" data-id="${spotify_id}">`;
 			html += `<img class="w-full" src = "${imgURLMed}" alt = "Album Cover" id = "album-cover-large" />`;
 			html += "<div class=\"px-6 py-4\"></div>";
@@ -41,7 +42,8 @@ let parameters;
 			html += `<h3 class="text-black" id="album-title">${title}</h3>`;
 			html += `<h4 class="text-black" id="artist-title">${artist}</h4>`;
 			html += "</div>";
-			html += "</div >";
+			html += "</div>";
+			html += "</div>";
 		}
 		$("#all-albums").append(html);
 
