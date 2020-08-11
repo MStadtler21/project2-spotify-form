@@ -84,7 +84,7 @@ $(function () {
 			var textInput = $("#comment-" + id).val();
 			console.log("id is ", id);
 			var newComment = {
-				author: "bradlayp",
+				author: parameters.displayName,
 				text: textInput,
 				AlbumSpotifyId: id
 			};
