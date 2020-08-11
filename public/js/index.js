@@ -41,16 +41,27 @@ let parameters;
 			html += `<h3 class="text-black" id="album-title">${title}</h3>`;
 			html += `<h4 class="text-black" id="artist-title">${artist}</h4>`;
 			html += "</div>";
+			html += `<div class="accordion" id="comment-drawer-${spotify_id}" >`;
+			html += `<form class="rounded px-8 pt-6 pb-8 mb-4">`;
+			html += `<div class="mb-4">`;
+			html += "<label class=\"block text-gray-700 text-sm font-bold mb-2\" for=\"comment\">";
+			html += "Comments";
+			html += `</label >`;
+			html += `<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment-${spotify_id}" type="text" placeholder="comment">`;
+			html += `</div>`;
+			html += `</form > `;
+			html += `</div>`;
 			html += "</div >";
 		}
 		$("#all-albums").append(html);
-
+		$(".accordion").hide();
 		$(".album-card").on("click", function (event) {
 			let comment = "";
-			console.log($(this).data("id"));
-
+			let id = $(this).data("id");
+			console.log(id);
+			$("#comment-drawer-" + id).show();
 			$.ajax({
-				url: `api/albums/${$(this).data("id")}`,
+				url: `api / albums / ${$(this).data("id")} `,
 				method: "GET",
 				data: { parameters: parameters.access_token, id: $(this).data("id") },
 			}).then(function (response) {
@@ -84,7 +95,7 @@ $("#album-search").on("click", function (event) {
 	var album = $("#search-input").val();
 
 	$.ajax({
-		url: `/api/search/${album}`,
+		url: `/ api / search / ${album} `,
 		method: "GET",
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
@@ -95,7 +106,7 @@ $("#submit-comment").on("click", function (event) {
 	console.log("dummy2");
 	var text = $("#comment-text").val();
 	$.ajax({
-		url: `/api/comment/${text}`,
+		url: `/ api / comment / ${text} `,
 		method: "POST",
 	}).then(function (response) {
 		$("").text(JSON.stringify(response));
@@ -111,7 +122,7 @@ $("#album-add").on("click", function (event) {
 	if (parameters.access_token) {
 		console.log("albumAdd");
 		$.ajax({
-			url: `/add/${id}/${parameters.access_token}`,
+			url: `/ add / ${id} /${parameters.access_token}`,
 			method: "GET",
 		}).then(function (response) {
 			$("").text(JSON.stringify(response));
