@@ -6,7 +6,12 @@ var querystring = require("querystring");
 module.exports = function (app) {
 	var client_id = "3b0d3695fb3e46f199fd7ee4d52c6f1a"; // Your client id
 	var client_secret = "b27677b64963453c9bc757b665aac458"; // Your secret
+<<<<<<< HEAD
 	var redirect_uri = process.env.REDIRECT || "http://localhost:8888/auth-user"; // production || development
+=======
+	//var redirect_uri = "https://project-2-chatify.herokuapp.com/auth-user"; // production
+	var redirect_uri = "http://localhost:8888/auth-user"; // development
+>>>>>>> 008b8b8b7425c52ba0453636122ec950b6d6e073
 
 	var stateKey = "spotify_auth_state";
 	/**
