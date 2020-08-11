@@ -2,6 +2,9 @@
 
 Chatify is an application that lets users find albums of their choosing allows them to post comments and view other user's comments about specified albums.
 
+## Demo
+[View on Heroku](https://project-2-chatify.herokuapp.com/#)
+
 ## Requirements
 Chatify requires users to have existing Spotify accounts to be able to post comments and view other's posts.
 
