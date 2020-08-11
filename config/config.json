@@ -1,8 +1,8 @@
 {
 	"development": {
 		"username": "root",
-		"password": "D@l3C00per!",
-		"database": "chatify_db",
+		"password": "S1mmons1",
+		"database": "chatify",
 		"host": "127.0.0.1",
 		"port": 3306,
 		"dialect": "mysql"
