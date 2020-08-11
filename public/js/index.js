@@ -43,9 +43,10 @@ $(function () {
 			html += `<h4 class="text-black" id="artist-title">${artist}</h4>`;
 			html += "</div>";
 			html += `<div class="accordion" id="comment-drawer-${spotify_id}" >`;
-			html += `<form class="rounded px-8 pt-6 pb-8 mb-4">`;
-			html += `<div class="mb-4">`;
-			html += "<label class=\"block text-gray-700 text-sm font-bold mb-2\" for=\"comment\">";
+			html += "<form class=\"rounded px-8 pt-6 pb-8 mb-4\">";
+			html += "<div class=\"mb-4\">";
+			html +=
+        "<label class=\"block text-gray-700 text-sm font-bold mb-2\" for=\"comment\">";
 			html += "Comments";
 			html += `</label>`;
 			html += `<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="comment-${spotify_id}" type="text" placeholder="comment">`;
@@ -75,6 +76,8 @@ $(function () {
 	// get token from url
 	parameters = getHashParams();
 
+	console.log(parameters);
+
 	if (parameters.access_token) {
 		// delete token from url
 		document.location.href = document.location.href.slice(
@@ -87,13 +90,13 @@ $(function () {
 		$("#login").show();
 	}
 });
-console.log(parameters);
 
 $("#album-search").on("click", function (event) {
 	console.log("test");
 	event.preventDefault();
 
 	var album = $("#search-input").val();
+
 
 	$.ajax({
 		url: `/api/search/${album}`,
