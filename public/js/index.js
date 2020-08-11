@@ -87,7 +87,6 @@ $("#album-search").on("click", function (event) {
 
   var album = $("#search-input").val();
 
-<<<<<<< HEAD
   $.ajax({
     url: `/api/search/${album}`,
     method: "GET",
@@ -125,40 +124,4 @@ $("#album-add").on("click", function (event) {
       location.reload();
     });
   }
-=======
-	$.ajax({
-		url: `/ api / search / ${album} `,
-		method: "GET",
-	}).then(function (response) {
-		$("").text(JSON.stringify(response));
-	});
-});
-
-$("#submit-comment").on("click", function (event) {
-	console.log("dummy2");
-	var text = $("#comment-text").val();
-	$.ajax({
-		url: `/ api / comment / ${text} `,
-		method: "POST",
-	}).then(function (response) {
-		$("").text(JSON.stringify(response));
-	});
-});
-
-$("#album-add").on("click", function (event) {
-	var id = $("#id-input").val();
-	id = id.split(":");
-	id = id[2];
-	console.log(id);
-	console.log(parameters.access_token);
-	if (parameters.access_token) {
-		console.log("albumAdd");
-		$.ajax({
-			url: `/ add / ${id} /${parameters.access_token}`,
-			method: "GET",
-		}).then(function (response) {
-			$("").text(JSON.stringify(response));
-		});
-	}
->>>>>>> 008b8b8b7425c52ba0453636122ec950b6d6e073
 });
