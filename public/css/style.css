@@ -164,3 +164,7 @@ canvas {
 	position: fixed;
 	/*-webkit-transform: translateZ(0);*/
 }
+
+.album-card {
+    margin-bottom: 15px;
+}

@@ -6,8 +6,8 @@ var querystring = require("querystring");
 module.exports = function (app) {
 	var client_id = "3b0d3695fb3e46f199fd7ee4d52c6f1a"; // Your client id
 	var client_secret = "b27677b64963453c9bc757b665aac458"; // Your secret
-	var redirect_uri = "https://project-2-chatify.herokuapp.com/"; // production
-	// var redirect_uri = "http://localhost:8888/auth-user"; // development
+	//var redirect_uri = "https://project-2-chatify.herokuapp.com/auth-user"; // production
+	var redirect_uri = "http://localhost:8888/auth-user"; // development
 
 	var stateKey = "spotify_auth_state";
 	/**
@@ -57,9 +57,9 @@ module.exports = function (app) {
 							// ! redirect to album page
 							res.redirect(
 								"/#" +
-                querystring.stringify({
-                	access_token: token,
-                })
+								querystring.stringify({
+									access_token: token,
+								})
 							);
 						});
 					}
