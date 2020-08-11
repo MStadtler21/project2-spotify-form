@@ -33,6 +33,12 @@ module.exports = function (app) {
 		});
 	});
 
+	app.get("/api/comment/:id", function (req, res) {
+		Comment.findAll().then(function (dbComment) {
+			res.json(dbComment);
+		});
+	});
+
 	app.post("/api/comment/:id", function (req, res) {
 		console.log("req.body is", req.body);
 		Comment.create({

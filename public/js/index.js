@@ -62,26 +62,24 @@ $(function () {
 		$(".album-card").on("click", function (event) {
 			let comment = "";
 			let id = $(this).data("id");
-
-
 			$("#comment-drawer-" + id).show();
+
 			$.ajax({
-				url: `api / albums / ${$(this).data("id")} `,
+				url: `/api/comment/${id}`,
 				method: "GET",
-				data: { parameters: parameters.access_token, id: $(this).data("id") },
 			}).then(function (response) {
-				console.log(response);
-				// $("").text(JSON.stringify(response));
+				processComments(data);
 			});
+
 		});
 
 		$(".comment").on("click", function (event) {
-			event.preventDefault();
 			let id = $(this).data("id");
+			var textInput = $("#comment-" + id).val();
 			console.log("id is ", id);
 			var newComment = {
 				author: "bradlayp",
-				text: "test",
+				text: textInput,
 				AlbumSpotifyId: id
 			};
 
@@ -108,6 +106,9 @@ $(function () {
 		$("#login").show();
 	}
 });
+function processComments(response) {
+	console.log(response);
+}
 
 $("#album-search").on("click", function (event) {
 	console.log("test");
