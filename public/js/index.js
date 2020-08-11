@@ -119,7 +119,11 @@ function processComments(response) {
 	console.log("this ", this);
 	var responseLength = response.length;
 	var html = "";
-	var id = response[0].AlbumSpotifyId;
+	if (response.length === 0) {
+		return;
+	} else {
+		var id = response[0].AlbumSpotifyId;
+	}
 	for (var i = 0; i < responseLength; i++) {
 		var text = response[i].text;
 		var displayName = response[i].displayName;
