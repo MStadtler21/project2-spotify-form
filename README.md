@@ -1,4 +1,5 @@
 # Chatify
+![screenshot](screenshot.jpg)
 
 Chatify is an application that lets users find albums of their choosing allows them to post comments and view other user's comments about specified albums.
 
